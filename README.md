@@ -108,3 +108,59 @@ redux – создаёт файлы для Redux (действие, редьюс
     id: uuidv4() // Генерирует уникальный идентификатор
     };
 
+
+    * part 3c
+    - Crete a file named db.json in the root in `part2` folder
+    - From the root directory of your app, we can run the json-server using the command npx:
+    - `npx json-server --port 3001 --watch db.json`
+
+    * Create `axios` library for to pull data fron the server. npm-commands should always be run in the project root directory, which is where the package.json file can be found => part2. 
+    - Run command `npm install axios`
+    
+    - Install json-server as a development dependency (only used during development) by executing the command: 
+    - Run `npm install json-server --save-dev`
+    : Add package.json=>"scripts"=> "server": "json-server -p3001 --watch db.json"
+
+    `
+    {
+  // ... 
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+
+    "server": "json-server -p3001 --watch db.json"
+  },
+}
+    `
+
+    We can now conveniently,  start the json-server from the project root directory with the command:
+
+    - `npm run server`
+
+    NB: To run json-server and your react app simultaneously, you may need to use two terminal windows. One to keep json-server running and the other to run our React application.
+
+    Add the following to the file App.jsx:
+
+    `
+    import axios from 'axios'
+
+    const hook = () => {
+    console.log('effect')
+    axios
+        .get('http://localhost:3001/notes')
+        .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+    })
+    }
+
+    useEffect(hook, [])
+    `
+
+    The second parameter of useEffect is used to specify how often the effect is run. If the second parameter is an empty array [], then the effect is only run along with the first render of the component.
+
+
+
+
