@@ -35,6 +35,7 @@ const addNote = (event) => {
       setNotes(notes.concat(returnedNote))
       setNewNote('')
     })
+    
   }
 
 const handleChangeNote = (event) => {
@@ -59,6 +60,11 @@ const handleChangeNote = (event) => {
     .then(returnedNote =>{
       setNotes(notes.map(n => n.id !== id ? n :returnedNote))
     })
+    .catch(error => {
+      alert(` ${note.content} the note could not be saved`)
+      setNotes(notes.filter(n => n.id !== id))
+    })
+
   }
 
   return (
