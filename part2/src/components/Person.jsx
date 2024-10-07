@@ -1,16 +1,14 @@
-const Person = (props)=>{
-    const filtredName = () => {
-        if (props.newFilter === '') {
-          return props.persons
-        } else {
-          return props.persons.filter(person => person.name.toLowerCase().startsWith(props.newFilter.toLowerCase()))
-        }
-      }
+const Person = ({persons, handleDeletePerson })=>{
+   
 
     return (
         <div>
               <ul>
-                {filtredName().map(person =><li key={person.id}>{person.name+' '+ person.number} </li>)}
+                {persons.map(person =>
+                <li key={person.id} className = 'person'>
+                  {person.name} {person.number}
+                  <button onClick={()=>handleDeletePerson(person.id)}>delete</button> 
+                </li>)}
               </ul>
         </div>
     )

@@ -161,6 +161,66 @@ redux – создаёт файлы для Redux (действие, редьюс
 
     The second parameter of useEffect is used to specify how often the effect is run. If the second parameter is an empty array [], then the effect is only run along with the first render of the component.
 
+    * In React we have to use the className attribute instead of the class attribute.
+
+    * Inline styles
+    - React also makes it possible to write styles directly in the code as so-called inline styles.
+    - CSS rules are defined slightly.
+
+    HTML CSS  would like this:
+    `
+    {
+        color: green;
+        font-style: italic;
+        font-size: 16px;
+    }
+    
+    `
+    But as a React inline-style object it would look like this:
+
+    `
+    {
+        color: 'green',
+        fontStyle: 'italic',
+        fontSize: 16
+    }
+    `
+    - <em></em> The <em> tag is used to define emphasized text. The content inside is typically displayed in italic.
+
+    Inline styles come with certain limitations. For instance, so-called pseudo-classes can't be used straightforwardly.
+    - A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). For    example, the pseudo-class :hover can be used to select a button when a user's pointer hovers over the button and this selected button can then be styled.
+    A pseudo-class consists of a colon (:) followed by the pseudo-class name (e.g., :hover).
+
+    `
+    /* Any button over which the user's pointer is hovering */
+    button:hover 
+    {
+        color: blue;
+    }
+    `
+
+    - In instance:
+    `
+    const Footer = () => {
+    const footerStyle = {
+        color: 'green',
+        fontStyle: 'italic',
+        fontSize: 16
+        }
+
+
+  return (
+    <div style= {footerStyle}>
+        <br />
+      <em>Note app, Department of Computer Science, University of Helsinki 2024</em>
+    </div>
+  );
+}
+
+export default Footer
+    `
+
+* Notice style={} writes in {}
 
 
 
