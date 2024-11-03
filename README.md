@@ -21,7 +21,7 @@ npm run dev
 
 
 
- * <b>reduse</b>
+ * <b>reduce</b>
  `
 var orders= [
     {amount: 250},
@@ -37,8 +37,8 @@ var totalAmount=0
 for (i=0 i< orders.length i++)
     totalAmount+=orders[i].amount
 
-with reduse
-var totalAmount = orders.reduse=>((sum, order) {
+with reduce
+var totalAmount = orders.reduce=>((sum, order) {
     sum+order.amount
 } , 0)
 
