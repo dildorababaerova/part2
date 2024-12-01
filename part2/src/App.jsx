@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Note from './components/Note'
 import noteService from './services/notes'
 import Notification from './components/Notification';
@@ -31,7 +31,7 @@ const addNote = (event) => {
     noteService
     .create(noteObject)
     .then(returnedNote => {
-      console.log(response)
+      console.log(returnedNote)
       setNotes(notes.concat(returnedNote))
       setNewNote('')
     })
@@ -50,7 +50,7 @@ const addNote = (event) => {
     .then(returnedNote =>{
       setNotes(notes.map(n => n.id !== id ? n :returnedNote))
     })
-    .catch(error => {
+    .catch(() => {
       setErrorMessage(
         `Note ${note.content} the note could not be saved`
       )
