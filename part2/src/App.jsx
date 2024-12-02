@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import { useEffect, useState } from 'react';
+>>>>>>> 9a32afb9fc00a4cb38160ef5838c6e88384007df
 import Note from './components/Note'
 import noteService from './services/notes'
 import Notification from './components/Notification';
@@ -10,7 +14,11 @@ const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('') 
   const [showAll, setShowAll] = useState(true)
+<<<<<<< HEAD
   const [errorMessage, setErrorMessage]= useState('some error happened...') 
+=======
+  const [errorMessage, setErrorMessage]= useState('') 
+>>>>>>> 9a32afb9fc00a4cb38160ef5838c6e88384007df
 
 useEffect(()=>{
   noteService
@@ -31,6 +39,7 @@ const addNote = (event) => {
     noteService
     .create(noteObject)
     .then(returnedNote => {
+<<<<<<< HEAD
       console.log(response)
       setNotes(notes.concat(returnedNote))
       setNewNote('')
@@ -49,8 +58,28 @@ const addNote = (event) => {
     .update(id, changedNote)
     .then(returnedNote =>{
       setNotes(notes.map(n => n.id !== id ? n :returnedNote))
+=======
+      console.log(returnedNote)
+      setNotes(notes.concat(returnedNote))
+      setNewNote('')
+>>>>>>> 9a32afb9fc00a4cb38160ef5838c6e88384007df
     })
-    .catch(error => {
+    
+  }
+
+  
+  const importantNotes = notes.filter(note => note.important);
+  
+  
+  const toggleImportanceOf = (id) => {
+    const note = notes.find(n => n.id === id)
+    const changedNote = { ...note, important: !note.important }
+    noteService
+    .update(id, changedNote)
+    .then(returnedNote =>{
+      setNotes(notes.map(n => n.id !== id ? n :returnedNote))
+    })
+    .catch(() => {
       setErrorMessage(
         `Note ${note.content} the note could not be saved`
       )
