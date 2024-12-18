@@ -133,34 +133,41 @@ const App = () => {
             window.localStorage.removeItem('loggedNoteappUser')
             setUser(null)
           }
-          }>
+          } className='logoutButton'>
             logout
           </button>
-          <Togglable buttonLabel="reveal">
-            <p>this line is at start hidden</p>
-            <p>also this is hidden</p>
+
+          <div> 
+            <Togglable  buttonLabel="reveal">
+            <h1>Notes</h1>
+            <div>
+              <button onClick={() => setShowAll(!showAll)}
+                className='showButton'
+                >
+                show {showAll ? 'important' : 'all' }
+                
+              </button>
+            </div>      
+            <ul>
+              {notesToShow.map(note => 
+              <Note
+                key={note.id}
+                note={note}
+                toggleImportance={() => toggleImportanceOf(note.id)}
+              />
+            )}
+            </ul>
+            </Togglable>
+          </div>
           <div>
-          <button onClick={() => setShowAll(!showAll)}>
-            show {showAll ? 'important' : 'all' }
-          </button>
-          </div>      
-          <ul>
-            {notesToShow.map(note => 
-            <Note
-              key={note.id}
-              note={note}
-              toggleImportance={() => toggleImportanceOf(note.id)}
-            />
-          )}
-          </ul>
-          </Togglable>
-          <Togglable buttonLabel="new note">
-            <NoteForm
-              onSubmit={addNote}
-              value={newNote}
-              handleChange={handleNoteChange}
-            />
-          </Togglable>
+            <Togglable  buttonLabel="new note">
+              <NoteForm
+                onSubmit={addNote}
+                value={newNote}
+                handleChange={handleNoteChange}
+              />
+            </Togglable>
+          </div>
         </div>
       } 
 

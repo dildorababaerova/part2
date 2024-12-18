@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios from 'axios'
 const baseUrl = '/api/notes'
 
 
@@ -29,4 +29,4 @@ const baseUrl = '/api/notes'
   
 
 
-module.exports ={ getAll, create, update, setToken }
+export default { getAll, create, update, setToken }

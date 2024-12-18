@@ -8,7 +8,7 @@ const NoteForm = ({onSubmit, handleChange, value}) => {
             value={value}
             onChange={handleChange}
           />
-          <button type="submit">save</button>
+          <button type="submit" className="saveButton">save</button>
         </form>
       </div>
     )

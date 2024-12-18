@@ -29,13 +29,62 @@
   margin-bottom: 10px;
 }
 
-.loginForm{
-  background-color: #f9f9f9;
-  padding: 20px;
+
+
+.loginFormUsername{
+  margin: 10px;
+  padding: 5px;
   border-radius: 5px;
-  margin-bottom: 10px;
 }
 
+.loginFormPassword{
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.loginButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.toggleCancelButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.logoutButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.toggleButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+
+.showButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+
+.saveButton{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
