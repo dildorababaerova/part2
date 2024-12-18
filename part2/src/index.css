@@ -29,7 +29,12 @@
   margin-bottom: 10px;
 }
 
-
+.loginForm{
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

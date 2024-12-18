@@ -1,7 +1,6 @@
-const LoginForm = (props) => {
+const LoginForm = ( props) => {
+    return(
     <div>
-    <h2>log in to application</h2>
-
     <form onSubmit={props.handleSubmit}>
       <div>
         username
@@ -23,7 +22,8 @@ const LoginForm = (props) => {
       </div>
       <button type="submit">login</button>
     </form> 
-    </div>     
+    </div>
+  )
 }
 
 export default LoginForm
