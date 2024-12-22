@@ -10,7 +10,7 @@ import Togglable from './components/Togglable'
 
 const App = () => {
   const [notes, setNotes] = useState([])
-  const [newNote, setNewNote] = useState('')
+  // const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
   const [username, setUsername] = useState('')
@@ -35,20 +35,13 @@ const App = () => {
       })
   }, [])
 
-  const addNote = (event) => {
-    event.preventDefault()
-    const noteObject = {
-      content: newNote,
-      important: Math.random() > 0.5,
-    }
-  
+  const addNote = (noteObject) => {
     noteService
       .create(noteObject)
         .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
-        setNewNote('')
       })
-  }
+    }
 
   const toggleImportanceOf = id => {
     const note = notes.find(n => n.id === id)
@@ -73,10 +66,6 @@ const App = () => {
           setErrorMessage(null)
         }, 5000)
       })
-  }
-
-  const handleNoteChange = (event) => {
-    setNewNote(event.target.value)
   }
 
   const handleLogin = async (event) => {
@@ -106,6 +95,17 @@ const App = () => {
     ? notes
     : notes.filter(note => note.important)
 
+    const loginForm = () => ( <Togglable buttonLabel='login'>
+      <LoginForm
+        username={username}
+        password={password}
+        handleUsernameChange={({ target }) => setUsername(target.value)}
+        handlePasswordChange={({ target }) => setPassword(target.value)}
+        handleSubmit={handleLogin}
+      />
+    </Togglable>
+    )
+
     
 
   return (
@@ -115,15 +115,7 @@ const App = () => {
 
       {!user && 
       <div>
-        <Togglable buttonLabel='login'>
-          <LoginForm
-            username={username}
-            password={password}
-            handleUsernameChange={({ target }) => setUsername(target.value)}
-            handlePasswordChange={({ target }) => setPassword(target.value)}
-            handleSubmit={handleLogin}
-          />
-        </Togglable>
+        {loginForm()}
       </div>
       }
       {user && 
@@ -162,9 +154,7 @@ const App = () => {
           <div>
             <Togglable  buttonLabel="new note">
               <NoteForm
-                onSubmit={addNote}
-                value={newNote}
-                handleChange={handleNoteChange}
+                createNote={addNote}
               />
             </Togglable>
           </div>
